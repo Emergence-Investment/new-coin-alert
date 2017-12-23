@@ -10,7 +10,7 @@ db.defaults({ coins: [] })
   .write();
 
 function checkForNewCoin() {
-  request('https://api.coinmarketcap.com/v1/ticker/?limit=2', function (error, response, body) {
+  request('https://api.coinmarketcap.com/v1/ticker/?limit=3', function (error, response, body) {
     //console.log('error:', error);
     //console.log('statusCode:', response && response.statusCode);
     //console.log('body:', body);
@@ -34,8 +34,8 @@ function checkForNewCoin() {
       
       const mail = {
         from: "Emergence Investment <emergence.crypto@gmail.com>",
-        to: "shenbomo@gmail.com",
-        subject: "There are new coins!",
+        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com",
+        subject: "There are new coins listed on CoinMarketCap!",
         text: newCoins.toString(),
         html: ''
       }
