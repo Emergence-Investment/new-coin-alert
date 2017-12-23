@@ -1,0 +1,14 @@
+{
+  "name": "new-coin-alert",
+  "version": "1.0.0",
+  "description": "sends alert when there is new coin listed on CoinMarketCap",
+  "main": "app.js",
+  "repository": "https://github.com/Emergence-Investment/new-coin-alert.git",
+  "author": "Bomo",
+  "license": "MIT",
+  "dependencies": {
+    "lowdb": "^1.0.0",
+    "nodemailer": "^4.4.1",
+    "request": "^2.83.0"
+  }
+}
