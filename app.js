@@ -56,4 +56,4 @@ function checkForNewCoin() {
 }
 
 console.log('Started polling for new coin from coinmarketcap.com...');
-setInterval(checkForNewCoin, 10000);
+setInterval(checkForNewCoin, 7200000);
