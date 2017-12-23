@@ -10,6 +10,7 @@ db.defaults({ coins: [] })
   .write();
 
 function checkForNewCoin() {
+  console.log("Polling...");
   request('https://api.coinmarketcap.com/v1/ticker/?limit=99999', function (error, response, body) {
     //console.log('error:', error);
     //console.log('statusCode:', response && response.statusCode);
