@@ -24,7 +24,7 @@ function checkForNewCoin() {
         console.log(currentCoins.coins[i].id);
       }
     };    
-    if (newCoins.length > 0 && newCoins.length <= 100) {  
+    if (newCoins.length > 0 && newCoins.length <= 1000) {  
       const smtpTransport = mailer.createTransport({
         service: "Gmail",
         auth: {
@@ -56,4 +56,4 @@ function checkForNewCoin() {
 }
 
 console.log('Started polling for new coin from coinmarketcap.com...');
-setInterval(checkForNewCoin, 10000);
+setInterval(checkForNewCoin, 10000000);
