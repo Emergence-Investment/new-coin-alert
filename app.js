@@ -35,7 +35,7 @@ function checkForNewCoin() {
       
       const mail = {
         from: "Emergence Investment <emergence.crypto@gmail.com>",
-        to: "shenbomo@gmail.com",
+        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com",
         subject: "There are new coins listed on CoinMarketCap!",
         text: newCoins.toString(),
         html: ''
@@ -56,4 +56,4 @@ function checkForNewCoin() {
 }
 
 console.log('Started polling for new coin from coinmarketcap.com...');
-setInterval(checkForNewCoin, 10000);
+setInterval(checkForNewCoin, 7200000);
