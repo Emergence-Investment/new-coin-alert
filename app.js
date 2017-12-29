@@ -35,7 +35,7 @@ function checkForNewCoin() {
       
       const mail = {
         from: "Emergence Investment <emergence.crypto@gmail.com>",
-        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com",
+        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com, jakethecryptoking@gmail.com",
         subject: "There are new coins listed on CoinMarketCap!",
         text: newCoins.toString(),
         html: ''
