@@ -1,5 +1,6 @@
 const request = require('request');
 const low = require('lowdb');
+const _ = require('lodash');
 const FileSync = require('lowdb/adapters/FileSync'); 
 const adapterCMC = new FileSync('./db/coin-market-cap-db.json');
 const adapterKucoin = new FileSync('./db/kucoin-db.json');
@@ -66,16 +67,17 @@ function checkForNewCoinKucoin() {
     //console.log('error:', error);
     //console.log('statusCode:', response && response.statusCode);
     //console.log('body:', body);
-    currentCoinsKucoin.coins = JSON.parse(body).data;
+    let coinsWithDuplicates = _.map(JSON.parse(body).data, 'coinType');
+    currentCoinsKucoin.coins = _.uniq(coinsWithDuplicates);
     var newCoins = [];
     for (var i = 0, len = currentCoinsKucoin.coins.length; i < len; i++) {            
-      if (typeof dbKucoin.get('coins').find({ coinType: currentCoinsKucoin.coins[i].coinType}).value() === "undefined") {      
-        newCoins.push(currentCoinsKucoin.coins[i].coinType);
+      if (_.indexOf(dbKucoin.get('coins').value(), currentCoinsKucoin.coins[i]) === -1) {      
+        newCoins.push(currentCoinsKucoin.coins[i]);
         console.log("new coin found!!!");
-        console.log(currentCoinsKucoin.coins[i].coinType);
+        console.log(currentCoinsKucoin.coins[i]);
       }
     };    
-    if (newCoins.length > 0 && newCoins.length <= 200) {  
+    if (newCoins.length > 0 && newCoins.length <= 50) {  
       const smtpTransport = mailer.createTransport({
         service: "Gmail",
         auth: {
