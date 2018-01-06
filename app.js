@@ -10,6 +10,17 @@ const mailer = require('nodemailer');
 var currentCoinsCMC = { coins: [] };
 var currentCoinsKucoin = { coins: [] };
 
+const emailRecipients = [
+  'shenbomo@gmail.com',
+  'njabels@gmail.com',
+  'kcwiener.1990@gmail.com',
+  'jakethecryptoking@gmail.com',
+  'bnadermann@gmail.com',
+  'tkstroup@gmail.com',
+  'samantha_nickel@outlook.com',
+  'tweltz@hotmail.com'
+]
+
 dbCMC.defaults({ coins: [] })
   .write();
 dbKucoin.defaults({ coins: [] })
@@ -38,13 +49,13 @@ function checkForNewCoinCMC() {
             pass: "idianrutakwakibt"
         }
       });
-      
+      const links = _.map(newCoins, (coin) => '<a href="https://coinmarketcap.com/currencies/' + coin + '/">' + coin + '</a>');
       const mail = {
         from: "Emergence Investment <emergence.crypto@gmail.com>",
-        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com, jakethecryptoking@gmail.com",
+        to: emailRecipients,
         subject: "There are new coins listed on CoinMarketCap!",
-        text: newCoins.toString(),
-        html: ''
+        text: "",
+        html: _.join(links, '<br/>')
       }
 
       smtpTransport.sendMail(mail, function(error, info){
@@ -88,7 +99,7 @@ function checkForNewCoinKucoin() {
       
       const mail = {
         from: "Emergence Investment <emergence.crypto@gmail.com>",
-        to: "shenbomo@gmail.com, njabels@gmail.com, kcwiener.1990@gmail.com, jakethecryptoking@gmail.com",
+        to: emailRecipients,
         subject: "There are new coins listed on Kucoin!",
         text: newCoins.toString(),
         html: ''
