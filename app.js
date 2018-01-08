@@ -120,5 +120,5 @@ function checkForNewCoinKucoin() {
 }
 
 console.log('Started polling for new coin from coinmarketcap.com and kucoin.com...');
-setInterval(checkForNewCoinCMC, 10000000);
-setInterval(checkForNewCoinKucoin, 10000000);
+setInterval(checkForNewCoinCMC, 100000);
+setInterval(checkForNewCoinKucoin, 100000);
