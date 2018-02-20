@@ -18,7 +18,8 @@ const emailRecipients = [
   'bnadermann@gmail.com',
   'tkstroup@gmail.com',
   'samantha_nickel@outlook.com',
-  'tweltz@hotmail.com'
+  'tweltz@hotmail.com',
+  'xuyemu@gmail.com'
 ]
 
 dbCMC.defaults({ coins: [] })
